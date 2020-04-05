@@ -153,12 +153,16 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-try
-    colorscheme desert
-catch
-endtry
+"try
+"    colorscheme desert
+"catch
+"endtry
 
-set background=dark
+"set background=dark
+
+hi Normal  ctermfg=254 ctermbg=none
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 254)
+
 
 " Set extra options when running in GUI mode
 if has("gui_running")

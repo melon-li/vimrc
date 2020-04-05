@@ -194,8 +194,79 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 
 " 安装markdown插件
+"plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
+
+Plugin 'jszakmeister/markdown2ctags'
+"""""""""""""配置 markdown2ctags""""""""""""""
+" Add support for markdown files in tagbar.
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '/c/Users/www/.vim_runtime/my_plugins/markdown2ctags/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '»',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+
+
 Plugin 'plasticboy/vim-markdown'
+
+"vim-markdown配置"
+
+
+" install ultisnips, vim-snippets
+"Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+
+
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'wesleyche/SrcExpl'
+Plugin 'mzlogin/vim-markdown-toc'
+
+
+Plugin 'wesleyche/Trinity'
+"""""""""""""""""Trinity configuratioin""""""""""""""""""""""
+" Open and close all the three plugins on the same time
+nmap <F8>  :TrinityToggleAll<CR>
+
+" Open and close the Source Explorer separately
+nmap <F9>  :TrinityToggleSourceExplorer<CR>
+
+" Open and close the Taglist separately
+nmap <F10> :TrinityToggleTagList<CR>
+
+" Open and close the NERD Tree separately
+nmap <F11> :TrinityToggleNERDTree<CR>
+
+
+
+
+Plugin 'preservim/nerdtree'
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+
+Plugin 'https://github.com/Chiel92/vim-autoformat'
+Plugin 'https://github.com/rhysd/vim-clang-format.git'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -211,3 +282,4 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+" o
